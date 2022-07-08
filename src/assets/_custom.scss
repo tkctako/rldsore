@@ -1,0 +1,32 @@
+// @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@1,6..96&family=Sorts+Mill+Goudy&display=swap');
+$hot-color: #e6dfd7;
+$primary-color: #343a40;
+$secondary-color: #6c757d;
+$muted-color: #f0f0f0;
+$white-color: #ffffff;
+$news-color: rgb(173, 139, 103);
+
+$font-family-title:  'Bodoni Moda', serif;
+$font-family-text: 'Bodoni Moda', serif;
+body{
+  font-family: $font-family-text;
+}
+.windows-enter-active,
+.windows-leave-active {
+  transition: opacity 0.5s;
+}
+.windows-enter,
+.windows-leave-to {
+  opacity: 0;
+}
+ul {
+  margin: 0;
+  padding-left: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  transition: all 0.3s;
+}

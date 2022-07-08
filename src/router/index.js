@@ -1,29 +1,83 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+const includPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return includPush.call(this, location).catch(err => err)
+}
 Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
-
-export default router
+export default new VueRouter({
+  routes: [
+    {
+      path: '*',
+      redirect: '/'
+    },
+    // 後台
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/Login.vue')
+    },
+    {
+      path: '/admin',
+      component: () => import('../views/Dashboard.vue'),
+      children: [
+        {
+          path: 'productsmanage',
+          name: 'ProductsManage',
+          component: () => import('../views/Admin/ProductsManage.vue'),
+          meta: { requiresAuth: true }
+        }
+      ]
+    },
+    // 前台
+    {
+      path: '/',
+      name: 'home',
+      component: () => import('../views/Layout.vue'),
+      children: [
+        {
+          path: '/',
+          name: 'Home',
+          component: () => import('../views/front/Home.vue')
+        },
+        {
+          path: '/news',
+          name: 'News',
+          component: () => import('../views/front/News.vue'),
+          children: [
+            {
+              path: '/news/love',
+              name: 'Love',
+              component: () => import('../views/front/news/love.vue')
+            },
+            {
+              path: '/news/mostwant',
+              name: 'Mostwant',
+              component: () => import('../views/front/news/mostwant.vue')
+            },
+            {
+              path: '/news/suit',
+              name: 'Suit',
+              component: () => import('../views/front/news/suit.vue')
+            }
+          ]
+        },
+        {
+          path: '/productslist',
+          name: 'ProductList',
+          component: () => import('../views/front/ProductList.vue')
+        },
+        {
+          path: '/productslist/:productId',
+          name: 'Product',
+          component: () => import('../views/front/Product.vue')
+        },
+        {
+          path: 'createorder',
+          name: 'CreateOrder',
+          component: () => import('../views/front/CreateOrder.vue')
+        }
+      ]
+    }
+  ]
+});
