@@ -305,6 +305,12 @@ export default {
   font-size: 2rem;
   font-weight: bold;
 }
+.navbar{
+  // >.container{
+  //  border-bottom: #d9d9de 0.1rem solid;
+  // }
+  border-bottom: #d9d9de 0.1rem solid;
+}
 .navbtn {
     border: 0;
 }
@@ -334,14 +340,17 @@ export default {
 // padding-bottom: 3px;
 font-size: 1rem;
 cursor: pointer;
-    .badge{
-        position: absolute;
-        top: auto;
-        bottom: 1px;
-        right: -1px;
-        padding: 0.5 0rem;
-        font-size: 0.7rem;
-    }
+&:focus {
+  box-shadow: unset;
+}
+  .badge{
+      position: absolute;
+      top: auto;
+      bottom: 1px;
+      right: -1px;
+      padding: 0.5 0rem;
+      font-size: 0.7rem;
+  }
 }
 
 .nav-item .dropdown-menu{
