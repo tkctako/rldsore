@@ -6,8 +6,8 @@
           <h1>新品到貨</h1>
         </div>
         <div>
-          <router-link to="/productslist?category=女士" class="btn btn-muted mr-3"> 女士服裝</router-link>
-          <router-link to="/productslist?category=男士" class="btn btn-muted"> 男士服裝</router-link>
+          <router-link to="/productslist?category=女士" class="btn btn-outline-light rounded-0 mr-3"> 女士服裝</router-link>
+          <router-link to="/productslist?category=男士" class="btn btn-outline-light rounded-0"> 男士服裝</router-link>
         </div>
       </div>
       <div class="row news mb-5">
