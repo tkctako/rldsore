@@ -6,9 +6,6 @@
                     <router-link to="/">首頁</router-link>
                 </li>
                 <li class="breadcrumb-item">
-                    產品列表
-                </li>
-                <li class="breadcrumb-item">
                    <router-link :to="{path : '/productslist', query:{category: product.options.mainCategory}}">
                    {{ product.options.mainCategory }}服裝
                    </router-link>
