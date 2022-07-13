@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pt-5">
         <ul class="mb-4 step">
             <li class="bg-light" :class="{'bg-dark text-light active': step===1}">
                 <strong>STEP</strong>
